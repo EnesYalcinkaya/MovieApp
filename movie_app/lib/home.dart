@@ -76,9 +76,10 @@ class _MovieAppState extends State<MovieApp> {
                     movieName: movieName,
                     posterPath: posterPath,
                     overview: overview,
-                    rating: rating,
+                    rating: double.parse(rating.toString()),
                     popularity: popularity,
                     language: language,
+                    index: index,
                   ),
                 ),
               );
@@ -96,9 +97,12 @@ class _MovieAppState extends State<MovieApp> {
                         child: ClipRRect(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(24)),
-                          child: Image.network(
-                            'https://image.tmdb.org/t/p/w500/$posterPath',
-                            fit: BoxFit.cover,
+                          child: Hero(
+                            tag: "hero-$index",
+                            child: Image.network(
+                              'https://image.tmdb.org/t/p/w500/$posterPath',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ),
@@ -109,9 +113,9 @@ class _MovieAppState extends State<MovieApp> {
                   children: [
                     Spacer(),
                     /*Text(
-                      movieName,
-                      style: TextStyle(color: Colors.white, fontSize: 25),
-                    )*/
+                        movieName,
+                        style: TextStyle(color: Colors.white, fontSize: 25),
+                      )*/
                   ],
                 )
               ],

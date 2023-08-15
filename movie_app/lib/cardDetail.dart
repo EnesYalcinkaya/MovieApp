@@ -7,14 +7,18 @@ class CardDetailPage extends StatelessWidget {
   final double rating;
   final double popularity;
   final String language;
+  final int index;
 
-  const CardDetailPage(
-      {super.key, required this.movieName,
-      required this.posterPath,
-      required this.overview,
-      required this.rating,
-      required this.popularity,
-      required this.language});
+  const CardDetailPage({
+    super.key,
+    required this.movieName,
+    required this.posterPath,
+    required this.overview,
+    required this.rating,
+    required this.popularity,
+    required this.language,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +57,12 @@ class CardDetailPage extends StatelessWidget {
                 bottomLeft: Radius.circular(50),
                 bottomRight: Radius.circular(50),
               ),
-              child: Image.network(
-                'https://image.tmdb.org/t/p/w500/$posterPath',
-                fit: BoxFit.cover,
+              child: Hero(
+                tag: "hero-$index",
+                child: Image.network(
+                  'https://image.tmdb.org/t/p/w500/$posterPath',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
