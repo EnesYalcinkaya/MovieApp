@@ -50,7 +50,7 @@ class _MovieAppState extends State<MovieApp> {
         ),
       ),
       body: GridView.builder(
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 5 / 8,
@@ -63,6 +63,9 @@ class _MovieAppState extends State<MovieApp> {
           final movieName = movie['title'];
           final posterPath = movie['poster_path'];
           final overview = movie['overview'];
+          final rating = movie['vote_average'];
+          final popularity = movie['popularity'];
+          final language = movie['original_language'];
 
           return GestureDetector(
             onTap: () {
@@ -73,6 +76,9 @@ class _MovieAppState extends State<MovieApp> {
                     movieName: movieName,
                     posterPath: posterPath,
                     overview: overview,
+                    rating: rating,
+                    popularity: popularity,
+                    language: language,
                   ),
                 ),
               );
