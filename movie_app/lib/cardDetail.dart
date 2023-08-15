@@ -1,10 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class CardDetailPage extends StatelessWidget {
   final String movieName;
   final String posterPath;
+  final String overview;
 
-  CardDetailPage({required this.movieName, required this.posterPath});
+  CardDetailPage(
+      {required this.movieName,
+      required this.posterPath,
+      required this.overview});
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +72,8 @@ class CardDetailPage extends StatelessWidget {
           ),
           SizedBox(height: 20),
           Text(
-            'Bu kısımda film hakkında bilgiler görüntülenecektir.',
-            style: TextStyle(fontSize: 16),
+            overview,
+            style: TextStyle(fontSize: 20),
           ),
         ],
       ),

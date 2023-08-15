@@ -62,6 +62,7 @@ class _MovieAppState extends State<MovieApp> {
           final movie = _movies[index];
           final movieName = movie['title'];
           final posterPath = movie['poster_path'];
+          final overview = movie['overview'];
 
           return GestureDetector(
             onTap: () {
@@ -71,6 +72,7 @@ class _MovieAppState extends State<MovieApp> {
                   builder: (context) => CardDetailPage(
                     movieName: movieName,
                     posterPath: posterPath,
+                    overview: overview,
                   ),
                 ),
               );
