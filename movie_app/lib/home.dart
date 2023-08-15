@@ -97,13 +97,13 @@ class _MovieAppState extends State<MovieApp> {
                     ],
                   ),
                 ),
-                Column(
+                const Column(
                   children: [
-                    const Spacer(),
-                    Text(
+                    Spacer(),
+                    /*Text(
                       movieName,
                       style: TextStyle(color: Colors.white, fontSize: 25),
-                    )
+                    )*/
                   ],
                 )
               ],
