@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+const apiKey = 'e7240cc3ba10b382efe00b0c7dc5608f'; // TMDb API anahtarınız
 
 class MovieApp extends StatefulWidget {
   const MovieApp({super.key});
@@ -8,6 +12,28 @@ class MovieApp extends StatefulWidget {
 }
 
 class _MovieAppState extends State<MovieApp> {
+  List<Map<String, dynamic>> _movies = [];
+
+  Future<void> fetchData() async {
+    final response = await http.get(Uri.parse(
+        'https://api.themoviedb.org/3/movie/popular?api_key=$apiKey'));
+
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> data = json.decode(response.body);
+      setState(() {
+        _movies = List<Map<String, dynamic>>.from(data['results']);
+      });
+    } else {
+      throw Exception('Veri çekme başarısız: ${response.statusCode}');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +55,11 @@ class _MovieAppState extends State<MovieApp> {
           mainAxisSpacing: 11,
           crossAxisSpacing: 15,
         ),
-        itemCount: 20,
+        itemCount: _movies.length,
         itemBuilder: (BuildContext context, int index) {
+          final movie = _movies[index];
+          final movieName = movie['title'];
+
           return Stack(
             children: [
               Card(
@@ -45,7 +74,7 @@ class _MovieAppState extends State<MovieApp> {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(24)),
                         child: Image.network(
-                          'https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHcjOgEE2t2.jpg',
+                          'https://image.tmdb.org/t/p/w500/${movie['poster_path']}',
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -53,11 +82,11 @@ class _MovieAppState extends State<MovieApp> {
                   ],
                 ),
               ),
-              const Column(
+              Column(
                 children: [
-                  Spacer(),
+                  const Spacer(),
                   Text(
-                    "   Movie Name",
+                    movieName,
                     style: TextStyle(color: Colors.white, fontSize: 25),
                   )
                 ],
