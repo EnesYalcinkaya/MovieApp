@@ -26,15 +26,14 @@ class CardDetailPage extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            height: MediaQuery.of(context).size.height *
-                0.5, // Cover the top half of the screen
+            height: MediaQuery.of(context).size.height * 0.5,
             width: double.infinity,
             decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
                   color: Colors.black.withOpacity(0.3),
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 7,
+                  blurRadius: 25,
                   offset: Offset(0, 3),
                 ),
               ],
@@ -59,10 +58,10 @@ class CardDetailPage extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildInfoBox('Duration', '2h 30m'),
-              _buildInfoBox('Release', '2023-08-15'),
-              _buildInfoBox('Rating', '8.5'),
-              _buildInfoBox('Quality', 'HD'),
+              _buildInfoBox('Duration', 'no data'),
+              _buildInfoBox('Release', 'no data'),
+              _buildInfoBox('Rating', 'no data'),
+              _buildInfoBox('Quality', 'no data'),
             ],
           ),
           SizedBox(height: 20),
