@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:lottie/lottie.dart';
+import 'package:lottie/lottie.dart';
 import 'package:movie_app/home.dart';
 
 class splashscreen extends StatefulWidget {
@@ -28,10 +28,10 @@ class _splashscreenState extends State<splashscreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Lottie.asset(
-            //   'images/1.json',
-            //   animate: true,
-            // ),
+            Lottie.asset(
+              'images/1.json',
+              animate: true,
+            ),
             const Text(
               "Mey Studio",
               style: TextStyle(
