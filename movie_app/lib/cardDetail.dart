@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CardDetailPage extends StatelessWidget {
+class CardDetailPage extends StatefulWidget {
   final String movieName;
   final String posterPath;
   final String overview;
@@ -21,8 +21,21 @@ class CardDetailPage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _CardDetailPageState createState() => _CardDetailPageState();
+}
+
+class _CardDetailPageState extends State<CardDetailPage> {
+  bool _isMoreExpanded = false;
+
+  void _toggleMore() {
+    setState(() {
+      _isMoreExpanded = !_isMoreExpanded;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    Color ratingBoxColor = rating < 7.0 ? Colors.orange : Colors.green;
+    Color ratingBoxColor = widget.rating < 7.0 ? Colors.orange : Colors.green;
 
     return Scaffold(
       backgroundColor: Color(0xFFD8D9DA),
@@ -48,21 +61,34 @@ class CardDetailPage extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               children: [
                 Container(
-                  height: MediaQuery.of(context).size.height * 0.51,
+                  height: MediaQuery.of(context).size.height * 0.61,
                   width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
-                    ),
-                    child: Hero(
-                      tag: "hero-$index",
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/w500/$posterPath',
-                        fit: BoxFit.cover,
-                      ),
+                  child: Hero(
+                    tag: "hero-${widget.index}",
+                    child: Image.network(
+                      'https://image.tmdb.org/t/p/w500/${widget.posterPath}',
+                      fit: BoxFit.cover,
                     ),
                   ),
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.61,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        Colors.transparent,
+                        const Color(0xffD8D9DA).withOpacity(.1),
+                        const Color(0xffD8D9DA).withOpacity(.2),
+                        Color(0xffD8D9DA)
+                      ])),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
@@ -70,14 +96,14 @@ class CardDetailPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.8,
                   child: Text(
-                    movieName,
+                    widget.movieName,
                     style: const TextStyle(
                       fontSize: 25,
                       fontWeight: FontWeight.bold,
@@ -90,21 +116,37 @@ class CardDetailPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 17),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Text(
+                widget.overview,
+                style: const TextStyle(fontSize: 20),
+              ),
+            ),
             const SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildInfoBox('Popularity', popularity.toString()),
-                _buildInfoBox('Language', language),
-                _buildInfoBox('Quality', '4K'),
+                if (_isMoreExpanded) _buildInfoBox('Quality', '4K'),
+                if (_isMoreExpanded)
+                  _buildInfoBox('Popularity', widget.popularity.toString()),
+                if (_isMoreExpanded) _buildInfoBox('Language', widget.language),
               ],
             ),
-            const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                overview,
-                style: const TextStyle(fontSize: 20),
+            GestureDetector(
+              onTap: _toggleMore,
+              child: Container(
+                margin: const EdgeInsets.symmetric(vertical: 10),
+                alignment: Alignment.center,
+                child: Text(
+                  _isMoreExpanded ? 'Less' : 'More',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFFFF6000),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],
@@ -133,7 +175,7 @@ class CardDetailPage extends StatelessWidget {
           Text(
             value,
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 15,
               color: Colors.black,
             ),
           ),
@@ -154,16 +196,16 @@ class CardDetailPage extends StatelessWidget {
           const Text(
             'Rating',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 14,
               color: Colors.white,
             ),
           ),
           const SizedBox(height: 5),
           const SizedBox(
-            width: 20,
+            width: 12,
           ),
           Text(
-            rating.toString(),
+            widget.rating.toString(),
             style: const TextStyle(
               fontSize: 17,
               color: Colors.white,

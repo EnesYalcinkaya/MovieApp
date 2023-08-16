@@ -113,10 +113,6 @@ class _MovieAppState extends State<MovieApp> {
                 const Column(
                   children: [
                     Spacer(),
-                    /*Text(
-                        movieName,
-                        style: TextStyle(color: Colors.white, fontSize: 25),
-                      )*/
                   ],
                 )
               ],
