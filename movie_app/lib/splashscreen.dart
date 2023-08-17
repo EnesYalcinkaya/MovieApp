@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:movie_app/home.dart';
+import 'package:movie_app/loginscreen.dart';
 
 class splashscreen extends StatefulWidget {
   const splashscreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _splashscreenState extends State<splashscreen> {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MovieApp()),
+        MaterialPageRoute(builder: (context) => Loginscreen()),
       );
     });
   }

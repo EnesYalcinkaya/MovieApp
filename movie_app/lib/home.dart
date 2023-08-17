@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'cardDetail.dart';
 
 const apiKey = 'e7240cc3ba10b382efe00b0c7dc5608f';
@@ -23,7 +22,7 @@ class _MovieAppState extends State<MovieApp> {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
       setState(() {
-        _movies = List<Map<String, dynamic>>.from(data['results']);
+        _movies = List<Map<String, dynamic>>.from(data['results']); //deyta
       });
     } else {
       throw Exception('Veri çekme başarısız: ${response.statusCode}');
