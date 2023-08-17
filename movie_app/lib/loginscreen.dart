@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'home.dart'; // Eğer home.dart dosyanızın yolu farklı ise düzeltiniz.
+import 'home.dart';
 
 class Loginscreen extends StatefulWidget {
   const Loginscreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginscreenState createState() => _LoginscreenState();
 }
 
@@ -20,13 +21,6 @@ class _LoginscreenState extends State<Loginscreen> {
     _passwordController.addListener(_checkLoginButtonStatus);
   }
 
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
   void _checkLoginButtonStatus() {
     setState(() {
       _isLoginButtonEnabled = _emailController.text.isNotEmpty &&
@@ -34,100 +28,99 @@ class _LoginscreenState extends State<Loginscreen> {
     });
   }
 
-  void _scrollToTextField(BuildContext context) {
-    final ScrollController scrollController = ScrollController();
-    final RenderBox renderBox = context.findRenderObject() as RenderBox;
-    final offset = renderBox.localToGlobal(Offset.zero);
-    scrollController.animateTo(
-      offset.dy - 100,
-      duration: Duration(milliseconds: 300),
-      curve: Curves.easeInOut,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF272829),
+      resizeToAvoidBottomInset: false,
       body: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.topLeft,
         children: [
           Image.asset(
             'images/loginscreen.png',
             fit: BoxFit.cover,
             width: double.infinity,
-            height: double.infinity,
+          ),
+          Positioned(
+            width: 300,
+            height: 300,
+            left: 130,
+            top: 600,
+            child: Image.asset('images/logo.png'),
           ),
           GestureDetector(
             onTap: () {
               FocusScope.of(context).unfocus();
             },
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 200),
-                  Container(
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextFormField(
-                      onTap: () {
-                        _scrollToTextField(context);
-                      },
-                      controller: _emailController,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        hintText: 'Email',
-                        hintStyle:
-                            TextStyle(color: Colors.white.withOpacity(0.5)),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                      ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 180),
+                const Text(
+                  " Login",
+                  style: TextStyle(fontSize: 50),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  width: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextFormField(
+                    controller: _emailController,
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      hintText: 'Email',
+                      hintStyle:
+                          TextStyle(color: Colors.black.withOpacity(0.5)),
+                      border: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 16),
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Container(
-                    width: 250,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.3),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextFormField(
-                      onTap: () {
-                        _scrollToTextField(context);
-                      },
-                      controller: _passwordController,
-                      obscureText: true,
-                      style: TextStyle(color: Colors.white),
-                      decoration: InputDecoration(
-                        hintText: 'Password',
-                        hintStyle:
-                            TextStyle(color: Colors.white.withOpacity(0.5)),
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                      ),
+                ),
+                const SizedBox(height: 10),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  width: 250,
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.3),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    style: const TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      hintStyle:
+                          TextStyle(color: Colors.black.withOpacity(0.5)),
+                      border: InputBorder.none,
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 16),
                     ),
                   ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  child: ElevatedButton(
                     onPressed: _isLoginButtonEnabled
                         ? () {
                             Navigator.of(context).pushReplacement(
                               MaterialPageRoute(
-                                  builder: (context) => MovieApp()),
+                                  builder: (context) => const MovieApp()),
                             );
                           }
                         : null,
                     style: ElevatedButton.styleFrom(
-                      primary: Color(0xFFFF6000), // Yeni rengi burada ayarlayın
+                      backgroundColor: const Color(0xFFFF6000),
                     ),
-                    child: Text('Login'),
+                    child: const Text('Login'),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

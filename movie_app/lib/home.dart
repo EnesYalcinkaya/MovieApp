@@ -38,12 +38,12 @@ class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFD8D9DA),
+      backgroundColor: Color(0xFFFDFCE9),
       appBar: AppBar(
         backgroundColor: Color(0xFF272829),
         centerTitle: true,
         title: const Text(
-          "Popular Movies",
+          "🎬 MOVIE PULSE",
           style: TextStyle(
             color: Color(0xFFFF6000),
           ),

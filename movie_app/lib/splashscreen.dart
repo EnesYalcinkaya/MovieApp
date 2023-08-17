@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:movie_app/home.dart';
 import 'package:movie_app/loginscreen.dart';
 
 class splashscreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFD8D9DA),
+      backgroundColor: Color(0xFFFFE6C7),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,34 +32,8 @@ class _splashscreenState extends State<splashscreen> {
               'images/1.json',
               animate: true,
             ),
-            const Text(
-              "Mey Studio",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _MovieAppState extends StatefulWidget {
-  @override
-  State<_MovieAppState> createState() => __MovieAppState();
-}
-
-class __MovieAppState extends State<_MovieAppState> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Movie App"),
-      ),
-      body: const Center(
-        child: Text("Welcome to Movie App!"),
       ),
     );
   }
