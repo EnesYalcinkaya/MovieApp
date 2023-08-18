@@ -94,8 +94,7 @@ class _LoginscreenState extends State<Loginscreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: FadeInLeft(
-                    duration:
-                        const Duration(milliseconds: 800), 
+                    duration: const Duration(milliseconds: 800),
                     child: TextFormField(
                       controller: _passwordController,
                       obscureText: true,
@@ -115,21 +114,23 @@ class _LoginscreenState extends State<Loginscreen> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                   child: FadeInLeft(
-                    duration:
-                        const Duration(milliseconds: 800), 
-                    child: ElevatedButton(
-                      onPressed: _isLoginButtonEnabled
-                          ? () {
-                              Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(
-                                    builder: (context) => const MovieApp()),
-                              );
-                            }
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFFF6000),
+                    duration: const Duration(milliseconds: 800),
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 90),
+                      child: ElevatedButton(
+                        onPressed: _isLoginButtonEnabled
+                            ? () {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                      builder: (context) => const MovieApp()),
+                                );
+                              }
+                            : null,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFFF6000),
+                        ),
+                        child: const Text('Login'),
                       ),
-                      child: const Text('Login'),
                     ),
                   ),
                 ),
