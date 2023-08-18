@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:animate_do/animate_do.dart'; // Import the animate_do package
+import 'package:animate_do/animate_do.dart'; 
 import 'home.dart';
 
 class Loginscreen extends StatefulWidget {
