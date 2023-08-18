@@ -38,7 +38,6 @@ class _CardDetailPageState extends State<CardDetailPage> {
     Color ratingBoxColor = widget.rating < 7.0 ? Colors.orange : Colors.green;
 
     return Scaffold(
-      backgroundColor: Color(0xFFD8D9DA),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -87,6 +86,8 @@ class _CardDetailPageState extends State<CardDetailPage> {
                         Colors.transparent,
                         const Color(0xffD8D9DA).withOpacity(.1),
                         const Color(0xffD8D9DA).withOpacity(.2),
+                        const Color(0xffD8D9DA).withOpacity(.3),
+                        const Color(0xffD8D9DA).withOpacity(.4),
                         Color(0xffD8D9DA)
                       ])),
                 ),

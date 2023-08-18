@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart'; // Import the animate_do package
 import 'home.dart';
 
 class Loginscreen extends StatefulWidget {
@@ -67,16 +68,20 @@ class _LoginscreenState extends State<Loginscreen> {
                     color: Colors.white.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: TextFormField(
-                    controller: _emailController,
-                    style: const TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      hintText: 'Email',
-                      hintStyle:
-                          TextStyle(color: Colors.black.withOpacity(0.5)),
-                      border: InputBorder.none,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16),
+                  child: FadeInLeft(
+                    duration:
+                        const Duration(milliseconds: 500), // Animation duration
+                    child: TextFormField(
+                      controller: _emailController,
+                      style: const TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        hintText: 'Email',
+                        hintStyle:
+                            TextStyle(color: Colors.black.withOpacity(0.5)),
+                        border: InputBorder.none,
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16),
+                      ),
                     ),
                   ),
                 ),
@@ -88,36 +93,44 @@ class _LoginscreenState extends State<Loginscreen> {
                     color: Colors.white.withOpacity(0.3),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: TextFormField(
-                    controller: _passwordController,
-                    obscureText: true,
-                    style: const TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      hintStyle:
-                          TextStyle(color: Colors.black.withOpacity(0.5)),
-                      border: InputBorder.none,
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16),
+                  child: FadeInLeft(
+                    duration:
+                        const Duration(milliseconds: 800), 
+                    child: TextFormField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      style: const TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        hintStyle:
+                            TextStyle(color: Colors.black.withOpacity(0.5)),
+                        border: InputBorder.none,
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 16),
+                      ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
-                  child: ElevatedButton(
-                    onPressed: _isLoginButtonEnabled
-                        ? () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                  builder: (context) => const MovieApp()),
-                            );
-                          }
-                        : null,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFF6000),
+                  child: FadeInLeft(
+                    duration:
+                        const Duration(milliseconds: 800), 
+                    child: ElevatedButton(
+                      onPressed: _isLoginButtonEnabled
+                          ? () {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (context) => const MovieApp()),
+                              );
+                            }
+                          : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFFF6000),
+                      ),
+                      child: const Text('Login'),
                     ),
-                    child: const Text('Login'),
                   ),
                 ),
               ],

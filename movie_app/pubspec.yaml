@@ -33,6 +33,7 @@ dependencies:
   tmdb_api:
   google_fonts:
   lottie: ^2.6.0
+  animate_do: ^3.0.2
   
 
 
