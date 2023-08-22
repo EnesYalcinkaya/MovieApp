@@ -53,10 +53,38 @@ class _LoginscreenState extends State<Loginscreen> {
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => MovieApp()),
         );
+      } else {
+        _showLoginFailedDialog(
+            "Login failed", "An error occurred while logging in.");
       }
     } catch (e) {
       print("Login error: $e");
+      _showLoginFailedDialog("Giriş Başarısız",
+          "Lütfen mail ve şifrenizi kontrol ederek tekrar deneyiniz");
     }
+  }
+
+  void _showLoginFailedDialog(String title, String content) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text(
+                "Tamam",
+                style: TextStyle(color: Color(0xFFFF6000)),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
