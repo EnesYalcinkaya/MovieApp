@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:movie_app/register.dart';
 import 'home.dart';
 
 void main() => runApp(MyApp());
@@ -165,7 +166,7 @@ class _LoginscreenState extends State<Loginscreen> {
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 10),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 90),
+                    padding: EdgeInsets.only(left: 80),
                     child: ElevatedButton(
                       onPressed: _isLoginButtonEnabled
                           ? _loginWithEmailAndPassword
@@ -176,6 +177,25 @@ class _LoginscreenState extends State<Loginscreen> {
                       child: const Text('Login'),
                     ),
                   ),
+                ),
+                const SizedBox(height: 1),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Padding(
+                      padding: EdgeInsets.only(left: 73),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpScreen()),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFFFF6000),
+                        ),
+                        child: const Text('Register'),
+                      )),
                 ),
               ],
             ),
