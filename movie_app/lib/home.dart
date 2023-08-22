@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:movie_app/Loginscreen.dart';
 import 'dart:convert';
 import 'cardDetail.dart';
 
@@ -46,7 +47,6 @@ class _MovieAppState extends State<MovieApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFDFCE9),
       appBar: AppBar(
         backgroundColor: Color(0xFF272829),
         centerTitle: true,
@@ -56,6 +56,12 @@ class _MovieAppState extends State<MovieApp> {
             color: Color(0xFFFF6000),
           ),
         ),
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const Loginscreen()));
+            }),
       ),
       body: _isLoading
           ? const Center(

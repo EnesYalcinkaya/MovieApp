@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "371956922767",
+    "project_id": "moovieapp-89342",
+    "storage_bucket": "moovieapp-89342.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371956922767:android:c006734f77cbdc754db3fa",
+        "android_client_info": {
+          "package_name": "com.example.movie_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371956922767-b0fta0c2q7j20l7p3oak92h6ucejchbg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCekg1X-BCwyKbMeSMRNGwaunUy_ZVbgHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371956922767-b0fta0c2q7j20l7p3oak92h6ucejchbg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

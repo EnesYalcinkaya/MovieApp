@@ -34,6 +34,8 @@ dependencies:
   google_fonts:
   lottie: ^2.6.0
   animate_do: ^3.0.2
+  firebase_auth: ^4.7.3
+  firebase_core: ^2.15.1
   
 
 
