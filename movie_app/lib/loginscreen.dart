@@ -77,7 +77,7 @@ class _LoginscreenState extends State<Loginscreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(
+              child: const Text(
                 "Tamam",
                 style: TextStyle(color: Color(0xFFFF6000)),
               ),
